@@ -45,11 +45,6 @@ class FCMService : FirebaseMessagingService() {
 
     private val messageMap = HashMap<Int, ArrayList<String?>>()
 
-    private val FLAG_MUTABLE = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      PendingIntent.FLAG_MUTABLE
-    } else {
-      0
-    }
     private val FLAG_IMMUTABLE = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       PendingIntent.FLAG_IMMUTABLE
     } else {
@@ -700,7 +695,7 @@ class FCMService : FirebaseMessagingService() {
                   this,
                   uniquePendingIntentRequestCode,
                   intent,
-                  PendingIntent.FLAG_ONE_SHOT or FLAG_MUTABLE
+                  PendingIntent.FLAG_ONE_SHOT 
                 )
               } else {
                 Log.d(TAG, "push receiver for notId $notId")
@@ -709,7 +704,7 @@ class FCMService : FirebaseMessagingService() {
                   this,
                   uniquePendingIntentRequestCode,
                   intent,
-                  PendingIntent.FLAG_ONE_SHOT or FLAG_MUTABLE
+                  PendingIntent.FLAG_ONE_SHOT
                 )
               }
             }
